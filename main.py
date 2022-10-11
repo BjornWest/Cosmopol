@@ -72,7 +72,7 @@ def roulette():
 def crash(bet,guess):
     #guess = input("Enter your guess: ")
     guess = float(guess)
-    crashTime = random()*random()*random()*random*20+1
+    crashTime = random()*random()*random()*random()*20+1
     adjust = 1
     scale = 100
     scales = [2,5,10,20,50,100]
@@ -118,13 +118,30 @@ def crash(bet,guess):
 
         root.update()
         time.sleep(1/20)
-cash = 100
-times = 0
-while cash>0:
-    times+=1
-    cash = cash +crash(10,2)
-    print("cash:",cash)
 
-print("wins: ",times/2-5, "losses: ",5+times/2, "win %",(times/2-5)/times)
+def probVis():
+    interval = 20
+    dSteps = 1000
+    d = []
+    calcs = 10000
+    for x in range(dSteps):
+        d.append(0)
+    for x in range(calcs):
+        a = int((3)*dSteps/20)
+        d[a] = d[a]+1
+    compare = 0
+    index = 0
+    for x in range(dSteps):
+        if d[x]*x > compare:
+            compare = d[x]*x
+            index = x
+            print(compare)
+    print(index*1/50)
+    print(index)
+    print(d)
 
-root.mainloop()
+
+
+probVis()
+
+#root.mainloop()
