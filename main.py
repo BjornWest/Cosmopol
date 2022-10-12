@@ -10,7 +10,7 @@ root = Tk()
 root.title("Cosmopol")
 root.geometry("2000x1000")
 
-my_canvas = Canvas(root, width=1000, height=1000, bg="black")
+my_canvas = Canvas(root, width=1000, height=1000, bg="white")
 my_canvas.pack(pady=20)
 
 
@@ -23,7 +23,7 @@ centerY = 500
 def flip():
     period = 20
     frames = 10000
-    maxHeight = 3 / 2
+    maxHeight = 5 / 2
     observeHeight = 5
     coinRelativeSize = 1/2
     sizeC = 200
@@ -123,25 +123,27 @@ def probVis():
     interval = 20
     dSteps = 1000
     d = []
-    calcs = 10000
-    for x in range(dSteps):
+    calcs = 1000000
+    for x in range(int(dSteps*21/20)):
         d.append(0)
     for x in range(calcs):
-        a = int((3)*dSteps/20)
+        a = int((random()*random()*random()*20+1)*dSteps/20)
         d[a] = d[a]+1
     compare = 0
     index = 0
-    for x in range(dSteps):
-        if d[x]*x > compare:
-            compare = d[x]*x
+    totSum = 0
+    for x in reversed(range(0,dSteps)):
+        totSum +=d[x]
+        if totSum/calcs*(x/50-1)> compare:
+            compare = totSum/calcs*(x/50-1)
             index = x
-            print(compare)
+            print(totSum/calcs)
     print(index*1/50)
-    print(index)
-    print(d)
+    print(compare)
+    totSum = 0
+    for x in reversed(range(0,dSteps)):
+        totSum +=d[x]
+        my_canvas.create_line(x,999,x,999-totSum/calcs*(x/50-1)*1000/compare,fill="green")
 
-
-
-probVis()
-
-#root.mainloop()
+flip()
+root.mainloop()
