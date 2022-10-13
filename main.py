@@ -145,5 +145,15 @@ def probVis():
         totSum +=d[x]
         my_canvas.create_line(x,999,x,999-totSum/calcs*(x/50-1)*1000/compare,fill="green")
 
+
+
+#cash = 100
+#while cash > 0:
+#    cash = cash+crash(1,2)
+ #   print(cash)
 flip()
+
+
+
+
 root.mainloop()
