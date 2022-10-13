@@ -147,11 +147,10 @@ def probVis():
 
 
 
-#cash = 100
-#while cash > 0:
-#    cash = cash+crash(1,2)
- #   print(cash)
-flip()
+cash = 100
+while cash > 0:
+    cash = cash+crash(1,2)
+    print(cash)
 
 
 
